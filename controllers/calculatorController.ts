@@ -4,7 +4,6 @@ import CalculatorRecord from '../models/calculatorRecordModel';
 const router = express.Router();
 
 router.get('/', (_request, response) => {
-    console.log('getting');
     const fetchCalRecord = new Promise<any>((resolve, _reject) => {
         void (async () => {
             const result = await CalculatorRecord.find({});
@@ -20,7 +19,6 @@ router.get('/', (_request, response) => {
 });
 
 router.post('/', (request, response) => {
-    console.log('posting');
     const newCalculatorRecord = new CalculatorRecord(request.body);
     void newCalculatorRecord
         .save()
