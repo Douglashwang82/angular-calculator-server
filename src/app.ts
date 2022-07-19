@@ -5,6 +5,7 @@ import Loggers from '../utils/logger';
 import calculatorController from '../controllers/calculatorController';
 import middlewares from '../utils/middlewares';
 import cors from 'cors';
+import morgan from 'morgan';
 
 // Add a list of allowed origins.
 // If you have more origins you would like to add, you can add them to the array below.
@@ -23,6 +24,7 @@ mongoose
 
 app.use(cors(options));
 app.use(express.json());
+app.use(morgan('tiny'));
 app.use('/api/calculator', calculatorController);
 app.use(middlewares.unknownEndPoint);
 app.use(middlewares.errorHandler);
